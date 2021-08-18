@@ -1,0 +1,285 @@
+<html>
+  <head>
+    <script>
+      /* EXERCISE 1
+      Write a function for changing the title of the document in something else.
+      */
+
+      const changeTitle = function (newTitle) {
+        // Select the element h1:
+        let header1 = document.querySelector("h1");
+
+        // Set the value of element innerText:
+        header1.innerText = newTitle;
+      };
+      
+
+      /* EXERCISE 2
+      Write a function for changing the class of the title of the page in "myHeading".
+      */
+
+      const addClassToTitle = function () {
+        // Select the element h1:
+        let header1 = document.querySelector("h1");
+        // Add class 'myHeading' to the h1 element:
+        header1.classList.add("myHeading");
+      };
+
+      /* EXERCISE 3
+      Write a function for changing the text of only the p which are children of a div.
+      */
+
+      const changePcontent = function () {
+        // Select all the <p> elements inside <div> element:
+        // CSS child combinator selector?
+        let paragraphElement = document.querySelector("div>p");
+        // Change the text of <p> element:
+          paragraphElement.innerText = "Paragraph element text changed from a function."
+      };
+
+      /* EXERCISE 4
+      Write a function for changing the destination of every link to https://www.google.com
+      */
+
+      const changeUrls = function () {
+        // Change destination of 'every link'? (There is only one what I found.)
+        // Well, get all <a> elements:
+        // Returns an array:
+        let linkElements = document.querySelectorAll("a");
+        // Loop array of link elements and set the href value:
+        for(let link of linkElements) {
+          link.href = "https://www.google.com";
+        }
+      };
+
+      /* EXERCISE 5
+      Write a function for adding a new item in the second list.
+      */
+
+      const addToTheSecond = function (content) {
+
+        // Get element <li> with ID of "secondlist"
+        let secondList = document.getElementById("secondList");
+
+        // Add new <li> element to the secondlist:
+        // Create <li> element:
+        let newLi = document.createElement("li");
+
+        // Add text to the <li> element:
+        newLi.innerText = "4th list item added";
+
+        // Add the element to the secondlist:
+        secondList.appendChild(newLi);
+
+      };
+
+      /* EXERCISE 6
+      Write a function for adding a second paragraph to the div.
+      */
+
+      const addParagraph = function (content) {
+        // Get the <div> element containing the <p> element
+        // Since it is the first <div> occurence:
+        let divElement = document.querySelector("div");
+        
+        // Create a new <p> element:
+        let newParagraph = document.createElement('p');
+
+        // Set innerText value for the created <p> element:
+        newParagraph.innerText = "Additional paragraph element inserted here.";
+
+        // Insert the new <p> element inside <div>:
+        divElement.appendChild(newParagraph);
+      };
+
+      /* EXERCISE 7
+      Write a function for making the first UL disappear.
+      */
+
+      const firstUlDisappear = function () {
+        // Select the first <ul> within the document:
+        let firstUl = document.querySelector("ul");
+
+        // CSS 'display' or 'visibility' attribute to use?
+
+        // Seems to take the <ul> away from the document 'flow':
+        // firstUl.style.display = "none";
+
+        // Seems to just make the <ul> invisible:
+        firstUl.style.visibility = "hidden";
+      };
+
+      /* EXERCISE 8
+      Write a function for making the background of every UL green.
+      */
+
+      const paintItGreen = function () {
+        // Select all <ul> elements:
+        let allUlElements = document.getElementsByTagName("ul");
+        
+        // Set the background color of every <ul> element to green:
+        for(ulElement of allUlElements) {
+          ulElement.style.background = "green";
+        }
+      };
+
+      /* EXERCISE 9
+      Make the heading of the page change color every time the user clicks on it.
+      */
+
+      const makeItClickable = function () {
+        // Select the <h1> element:
+        let h1Element = document.querySelector("h1");
+        
+        // Create a function which changes the h1 element color randomly:
+        let randomColorforH1 = function() {
+          // Some random color generator code taken from StackOverFlow:
+          let letters = '0123456789ABCDEF';
+          let randomColor = '#';
+          for (var i = 0; i < 6; i++) {
+            randomColor += letters[Math.floor(Math.random() * 16)];
+          }
+          h1Element.style.color = randomColor;
+        }
+
+        // Add function to run when event 'click' happens on <h1> element.
+        h1Element.onclick = randomColorforH1;
+
+      };
+
+      /* EXERCISE 10
+      Change the footer text with something else when the user clicks on it.
+      */
+
+      const changeFooterText = function () {
+        // Select the <p> element from the <footer> element:
+          let footerParagraph = document.querySelector("footer p");
+          
+        // Create a function to provide random text:
+          let randomText = function() {
+            let letters = ['a','b','c','d','e','f','g','h','i','j'];
+            let randomString = "";
+            for(let i=0; i < 20; i++) {
+              randomString += letters[Math.floor(Math.random() * 10)];
+            }
+            
+            // Add the random string to footer paragraph:
+            footerParagraph.innerText = randomString;
+          }
+        // Add function to run when event 'click' happens to <p> element
+        // inside the <footer> element
+        footerParagraph.onclick = randomText;
+      };
+
+      /* EXERCISE 11
+      Attach an event listener to the input field in the page for console logging its value just after any keystroke.
+      */
+
+      /* EXERCISE 12
+      Create a new welcome alert message when the page successfully loads.
+      */
+
+      window.onload = function () {
+
+        // Exercise 12:
+        alert("Welcome to successfully loaded page!");
+
+        // Exercise 1:
+        changeTitle("Changed header to something else");
+
+        // Exercise 2:
+        addClassToTitle();
+
+        // Exercise 3:
+        changePcontent();
+
+        // Exercise 4:
+        changeUrls();
+
+        // Exercise 5:
+        addToTheSecond();
+
+        // Exercise 6:
+        addParagraph();
+
+        // Exercise 7:
+        firstUlDisappear();
+
+        // Exercise 8:
+        paintItGreen();
+
+        // Exercise 9:
+        makeItClickable();
+
+        // Exercise 10:
+        changeFooterText();
+
+        // Exercise 11:
+        // Moved the written line below here from line 177.
+        // Otherwise the returned value would be null initially
+        // since HTML file is read from top to bottom and script would run
+        // line by line, right?
+
+        // This line was moved to here:
+        const inputField = document.getElementById("input-field");
+        // Add function to run when 'keypress' event happens:
+        inputField.onkeypress = function(event) {
+          // Within developer tools we can see what is being logged:
+          console.log(event.target.value);
+        }
+      };
+
+      /* EXERCISE 13
+      Use HTML5 tags to divide the content of the page in a more semantic way.
+      */
+      // ????
+
+    </script>
+
+    <style>
+      .myHeading {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>This is the title of the page</h1>
+      <h2>This is the subtitle of the page</h2>
+    </header>
+
+    <main>
+      <hr />
+
+      <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <a href="strive.school">This link goes to Strive School</a>
+
+      <div>
+        <p>This text is just for the exercise</p>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          id="input-field"
+          placeholder="input field for the exercise"
+        />
+      </div>
+    </main>
+
+    <footer>
+      <p>And this text is just for the exercise too!</p>
+    </footer>
+  </body>
+</html>
