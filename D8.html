@@ -61,12 +61,12 @@
         // Get element <li> with ID of "secondlist"
         let secondList = document.getElementById("secondList");
 
-        // Add new <li> element to the secondlist:
+        // Add new <li> element to the secondlist
         // Create <li> element:
         let newLi = document.createElement("li");
 
         // Add text to the <li> element:
-        newLi.innerText = "4th list item added";
+        newLi.innerText = content;
 
         // Add the element to the secondlist:
         secondList.appendChild(newLi);
@@ -86,7 +86,7 @@
         let newParagraph = document.createElement('p');
 
         // Set innerText value for the created <p> element:
-        newParagraph.innerText = "Additional paragraph element inserted here.";
+        newParagraph.innerText = content;
 
         // Insert the new <p> element inside <div>:
         divElement.appendChild(newParagraph);
@@ -139,6 +139,7 @@
           for (var i = 0; i < 6; i++) {
             randomColor += letters[Math.floor(Math.random() * 16)];
           }
+          h1Element.style.cursor = "pointer";
           h1Element.style.color = randomColor;
         }
 
@@ -197,10 +198,10 @@
         changeUrls();
 
         // Exercise 5:
-        addToTheSecond();
+        addToTheSecond("4th item added to the list.");
 
         // Exercise 6:
-        addParagraph();
+        addParagraph("Additional paragraph element inserted here.");
 
         // Exercise 7:
         firstUlDisappear();
